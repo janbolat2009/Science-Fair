@@ -24,7 +24,7 @@ export default function Chatbot({ fatigueData, schedule = [] }) {
     setLoading(true)
 
     try {
-      const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+      const baseURL = import.meta.env.VITE_API_URL || ''
       const res = await axios.post(`${baseURL}/api/coach`, {
         message: input,
         fatigueData,

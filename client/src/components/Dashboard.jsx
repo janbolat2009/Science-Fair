@@ -41,7 +41,7 @@ export default function Dashboard() {
     try {
       const endpoint = authMode === 'register' ? '/api/auth/register' : '/api/auth/login'
       const body = authMode === 'register' ? regForm : { username: regForm.username, password: regForm.password }
-      const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+      const baseURL = import.meta.env.VITE_API_URL || ''
       const res = await fetch(`${baseURL}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -98,7 +98,7 @@ export default function Dashboard() {
   const handleReschedule = async (tired = isTired) => {
     setIsRescheduling(true)
     try {
-      const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+      const baseURL = import.meta.env.VITE_API_URL || ''
       const res = await fetch(`${baseURL}/api/reschedule`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -136,7 +136,7 @@ export default function Dashboard() {
       }))
       setTasks(modifiedTasks)
 
-      const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+      const baseURL = import.meta.env.VITE_API_URL || ''
       const res = await fetch(`${baseURL}/api/reschedule`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -262,7 +262,7 @@ export default function Dashboard() {
   // Handle Onboarding Completion
   const handleOnboardingComplete = async (bioProfile) => {
     try {
-      const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+      const baseURL = import.meta.env.VITE_API_URL || ''
       await fetch(`${baseURL}/api/user/profile/${user.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
