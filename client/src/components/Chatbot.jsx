@@ -37,10 +37,11 @@ export default function Chatbot({ fatigueData, schedule = [] }) {
         content: res.data.message,
         stateData: res.data.stateData
       }])
-    } catch {
+    } catch (err) {
+      const errorMsg = err.response?.data?.error || err.message || 'Connection error'
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: 'Connection error. Please check your API key in server/.env',
+        content: `Error: ${errorMsg}. Please check your OpenAI API key in Vercel settings.`,
         stateData: null
       }])
     }
